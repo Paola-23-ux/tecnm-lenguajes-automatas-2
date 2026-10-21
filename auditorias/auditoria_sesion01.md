@@ -1,26 +1,67 @@
-Bitácora de Requerimientos y Auditoría IA — Sesión 01
-Materia: Lenguajes y Autómatas II (SCD-1016)  
-Tema: Encuadre, Diagnóstico de Punteros y Metodología IA  
-Docente Titular: MCC. Iván Márquez Larios (`ijmarquezl`)  
-Estudiante: Ingrid Paola Dzul Segovia  
-Matrícula: [24531350]  
-Track: C
+
+# Bitácora de Requerimientos y Auditoría IA — Sesión 01
+
+**Materia:** Lenguajes y Autómatas II (SCD-1016)  
+**Tema:** Encuadre, Diagnóstico de Punteros y Metodología IA  
+**Docente Titular:** MCC. Iván Márquez Larios (`ijmarquezl`)  
+**Estudiante:** Ingrid Paola Dzul Segovia  
+**Matrícula:** 24531350  
+**Track:** C
+
 ---
-1. Fase 1: El Artesano (Dificultad Manual)
-Reto: Inversión de buffer in-place (`char*`).
-Problema o restricción identificada:  
-El principal reto fue comprender cómo mover dos punteros dentro del mismo arreglo de caracteres sin utilizar otro buffer. También fue necesario evitar que el puntero del final apuntara al carácter terminador `\0` y detener los intercambios cuando ambos punteros se encontraran o cruzaran. Para ello se utilizó una variable temporal y se avanzó desde los extremos hacia el centro.
-Evidencia de ejecución: La cadena `HOLA` se transformó en `ALOH`.
-2. Fase 2: El Científico (Ingeniería de Requerimientos C-R-E-O)
-2.1 Matriz de Especificación Formal
-Elemento C-R-E-O	Definición Técnica
-Contexto (C)	Lenguaje C compatible con GCC; invertir un arreglo de caracteres modificable en su misma memoria.
-Rol (R)	Ingeniero de software especializado en C, punteros y análisis de algoritmos.
-Especificación (E)	Usar `char*`, tiempo O(n), memoria auxiliar O(1), manejar `NULL`, cadenas vacías y longitudes impares, sin asignar otro arreglo.
-Output (O)	Código en C y análisis de complejidad.
-2.2 Prompt Estructurado
-> Actúa como ingeniero de software especializado en lenguaje C y manejo de punteros. Necesito una función que invierta un buffer modificable de caracteres directamente en memoria (*in-place*), usando `char*`. La solución debe tener complejidad O(n) en tiempo y O(1) en memoria auxiliar, sin crear un segundo arreglo. Debe manejar un puntero `NULL`, cadenas vacías y cadenas de longitud par o impar. Devuelve código C compatible con GCC y explica brevemente su complejidad.
-3. Código Devuelto por el Modelo
+
+## 1. Fase 1: El Artesano (Dificultad Manual)
+
+*Reto: Inversión de buffer in-place (char\*)*
+
+*Describe qué problema o restricción de memoria/sintaxis identificaste al codificar a mano:*
+
+El principal reto fue comprender cómo utilizar dos punteros para recorrer una cadena de caracteres desde sus extremos e intercambiar sus valores sin utilizar otro arreglo.
+
+También fue necesario considerar el carácter terminador `\0`, ya que este no debe intercambiarse con las letras. Para resolverlo, se utilizó una variable temporal y se movieron los punteros hacia el centro hasta que se encontraron o cruzaron.
+
+La ejecución permitió comprobar que la palabra `HOLA` se invirtió correctamente a `ALOH`.
+
+---
+
+## 2. Fase 2: El Científico (Ingeniería de Requerimientos C-R-E-O)
+
+### 2.1 Matriz de Especificación Formal
+
+| Elemento C-R-E-O | Definición Técnica |
+|---|---|
+| **Contexto (C)** | C99 / GCC, sin bibliotecas no estándar. |
+| **Rol (R)** | Ingeniero de software de sistemas y compiladores. |
+| **Especificación (E)** | Punteros `char*`, O(n) tiempo, O(1) memoria auxiliar, manejo de NULL y cadenas vacías. |
+| **Output (O)** | Código modular en C y análisis de complejidad. |
+
+### 2.2 Prompt Estructurado
+
+```text
+Actúa como un ingeniero de software especializado
+en lenguaje C y manejo de punteros.
+
+Necesito desarrollar una función que invierta
+un buffer de caracteres directamente en memoria
+(in-place), utilizando un puntero char*.
+
+La solución debe cumplir estos requisitos:
+
+- Complejidad O(n) en tiempo.
+- Complejidad O(1) en memoria auxiliar.
+- No utilizar arreglos adicionales.
+- Manejar correctamente punteros NULL.
+- Funcionar con cadenas vacías.
+- Funcionar con longitudes pares e impares.
+
+Devuelve el código completo en C compatible
+con GCC y explica brevemente su complejidad.
+```
+
+---
+
+## 3. Código Devuelto por el Modelo
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -43,25 +84,47 @@ int main(void) {
     char palabra[] = "MUNDO";
 
     printf("Original: %s\n", palabra);
+
     invertir(palabra);
+
     printf("Invertida: %s\n", palabra);
 
     return 0;
 }
 ```
-Evidencia de ejecución: `Original: MUNDO` → `Invertida: ODNUM`.
-4. Fase 3: El Auditor (Resultados del Test Harness)
-Pruebas ejecutadas en el archivo `harness_sesion01_c.c`:
-[x] Cadena normal: `HOLA` → `ALOH`.
-[x] Longitud impar: `ABCDE` → `EDCBA`.
-[x] Cadena vacía: `""` → `""`.
-[x] Puntero `NULL`: la función retorna sin intentar desreferenciarlo.
-[x] Cadena de un carácter: `A` → `A`.
-Salida observada: `TODAS LAS PRUEBAS PASARON`.
-Comprobaciones de la plantilla:
-[x] Los casos probados terminaron sin fallos visibles (crash).
-[ ] Ausencia de accesos fuera de límites y fugas de memoria verificada con herramientas especializadas (pendiente: no se ejecutó AddressSanitizer ni Valgrind).
-[x] La complejidad teórica de la función revisada es O(n) en tiempo y O(1) en memoria auxiliar.
-Reporte Crítico
-La solución de IA considera el caso `NULL` y funciona con las entradas probadas. Una limitación importante de la auditoría realizada es que el test harness contiene una copia de la función `invertir` y no enlaza directamente el archivo `ia_sesion01_c.c`. Por eso, aunque las cinco pruebas pasaron, todavía es recomendable ejecutar las pruebas contra la implementación original de IA. Además, la función presupone que recibe una cadena válida, terminada en `\0` y almacenada en memoria modificable; no debe usarse sobre literales de cadena ni buffers sin terminador.
-Firma digital: `Paola-23-ux`
+
+---
+
+## 4. Fase 3: El Auditor (Resultados del Test Harness)
+
+*Pruebas ejecutadas: Valores NULL, buffers vacíos y longitudes impares.*
+
+- [x] Caso base y límites probados sin Crash.
+- [ ] No existen accesos fuera de límites ni Memory Leaks. (Pendiente de comprobar con herramientas especializadas).
+- [x] La complejidad teórica coincide con la implementada.
+
+### Reporte Crítico
+
+*¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
+
+La solución generada por la inteligencia artificial contempla el manejo de valores NULL y cadenas vacías, por lo que no se identificaron errores en los cinco casos ejecutados.
+
+Las pruebas realizadas fueron:
+
+1. Cadena normal: `HOLA` → `ALOH`.
+2. Longitud impar: `ABCDE` → `EDCBA`.
+3. Cadena vacía: `""` → `""`.
+4. Puntero `NULL`: retorno sin error.
+5. Un carácter: `A` → `A`.
+
+**Resultado obtenido:** TODAS LAS PRUEBAS PASARON.
+
+Sin embargo, se identificó una limitación en la auditoría: las pruebas se realizaron sobre una copia de la función y no directamente sobre el archivo original generado por IA.
+
+Para mejorar la validación, se recomienda ejecutar las pruebas contra la implementación original y utilizar herramientas de análisis de memoria.
+
+También es importante verificar que el buffer recibido sea modificable y que contenga el terminador `\0`.
+
+---
+
+**Firma digital:** `Paola-23-ux`
