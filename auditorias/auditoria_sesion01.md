@@ -174,19 +174,15 @@ Todos los casos mostraron el estado OK y no se presentaron errores de compilaci�
 
 ## 5. Reporte Crítico
 
-Durante la auditoría se comprobó que la implementación generada mediante inteligencia artificial cumplía con los requisitos establecidos para invertir cadenas de caracteres.
+Durante la auditoría se comprobó que el código generado por inteligencia artificial cumplía con los requisitos establecidos para invertir cadenas de caracteres.
 
-Uno de los casos borde más importantes fue `invertir(NULL)`, ya que intentar acceder a un puntero nulo podría provocar un error de ejecución.
+Uno de los casos borde más importantes fue `invertir(NULL)`, ya que intentar acceder a un puntero nulo podría provocar un error en el programa. Sin embargo, la IA incluyó una condición para evitar este problema.
 
-La IA no omitió este caso, porque incluyó una condición que permite finalizar la función cuando el puntero recibido es NULL.
+También se evaluaron las cadenas vacías y las cadenas de un solo carácter, comprobando que ambas se procesaran correctamente.
 
-También se evaluaron cadenas vacías y cadenas de un solo carácter. Estos casos son importantes porque no requieren intercambios y deben conservar su contenido original.
+La IA no omitió ninguno de los casos borde evaluados. Esto se comprobó mediante el test harness, que ejecutó seis pruebas automáticas y mostró el resultado OK en todas ellas.
 
-Las seis pruebas permitieron comprobar que ambas implementaciones funcionaban correctamente con las entradas establecidas.
-
-Sin embargo, el harness no comprueba todos los posibles errores de memoria, como recibir una cadena sin terminador nulo o un puntero a memoria no modificable.
-
-Por esta razón, considero que la inteligencia artificial es una herramienta útil para desarrollar programas, pero sus resultados siempre deben revisarse mediante pruebas y análisis del código.
+Aunque todas las pruebas fueron correctas, comprendí que es importante revisar el código generado por inteligencia artificial, ya que pueden existir errores que no se detecten con las pruebas realizadas.
 
 ---
 
