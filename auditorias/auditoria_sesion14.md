@@ -2,8 +2,8 @@
 **Materia:** Lenguajes y Autómatas II (SCD-1016)  
 **Tema:** Declaración vs Uso de Variables  
 **Docente Titular:** MCC. Iván Márquez Larios (`ijmarquezl`)  
-**Estudiante:** [Nombre Completo]  
-**Matrícula:** [No. de Control]  
+**Estudiante:** Ingrid Paola Dzul Segovia  
+**Matrícula:** 24531350.  
 **Track:** [ C | Rust ]  
 
 ---
@@ -129,4 +129,4 @@ TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion14.md
 > return -1;` antes de insertar y el guardián `nombre == NULL` en `usar()`.
 
 ---
-**Firma digital:** [Usuario de GitHub]
+**Firma digital:** Paola-23-ux
