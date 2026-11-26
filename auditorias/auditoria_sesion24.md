@@ -138,6 +138,71 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion24.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion24_c.c`:**
+
+```text
+=== AUDITORIA SESION 24 - Saltos condicionales con cortocircuito ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] a && b (primer salto)
+     esperado: IFFALSE a GOTO L9
+     obtenido: IFFALSE a GOTO L9
+     -> OK
+[ 2] a && b (segundo salto)
+     esperado: IFFALSE b GOTO L9
+     obtenido: IFFALSE b GOTO L9
+     -> OK
+[ 3] a && b (dos saltos)                esperado: 2            obtenido: 2            OK
+[ 4] a || b (primer salto)
+     esperado: IFTRUE a GOTO L9
+     obtenido: IFTRUE a GOTO L9
+     -> OK
+[ 5] a || b (segundo salto)
+     esperado: IFTRUE b GOTO L9
+     obtenido: IFTRUE b GOTO L9
+     -> OK
+[ 6] condicion simple (b NULL)
+     esperado: IFFALSE a GOTO L0
+     obtenido: IFFALSE a GOTO L0
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion24.md
+```
+
+**Celda 2 - `ia_sesion24_c.c`:**
+
+```text
+=== AUDITORIA SESION 24 - Saltos condicionales con cortocircuito ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] a && b (primer salto)
+     esperado: IFFALSE a GOTO L9
+     obtenido: IFFALSE a GOTO L9
+     -> OK
+[ 2] a && b (segundo salto)
+     esperado: IFFALSE b GOTO L9
+     obtenido: IFFALSE b GOTO L9
+     -> OK
+[ 3] a && b (dos saltos)                esperado: 2            obtenido: 2            OK
+[ 4] a || b (primer salto)
+     esperado: IFTRUE a GOTO L9
+     obtenido: IFTRUE a GOTO L9
+     -> OK
+[ 5] a || b (segundo salto)
+     esperado: IFTRUE b GOTO L9
+     obtenido: IFTRUE b GOTO L9
+     -> OK
+[ 6] condicion simple (b NULL)
+     esperado: IFFALSE a GOTO L0
+     obtenido: IFFALSE a GOTO L0
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion24.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió emitía **los dos saltos siempre**,

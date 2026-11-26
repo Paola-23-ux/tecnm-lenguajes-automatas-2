@@ -128,6 +128,59 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion21.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion21_c.c`:**
+
+```text
+=== AUDITORIA SESION 21 - Cuadruplos y temporales unicos ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] nuevo_temporal(_t0)                esperado: _t0          obtenido: _t0          OK
+[ 2] nuevo_temporal(_t7)                esperado: _t7          obtenido: _t7          OK
+[ 3] cuadruplo de a + b
+     esperado: (+, a, b, _t0)
+     obtenido: (+, a, b, _t0)
+     -> OK
+[ 4] cuadruplo de _t0 * c
+     esperado: (*, _t0, c, _t1)
+     obtenido: (*, _t0, c, _t1)
+     -> OK
+[ 5] asignacion simple                  esperado: (=, a, _, x) obtenido: (=, a, _, x) OK
+[ 6] goto sin operandos
+     esperado: (goto, L1, _, _)
+     obtenido: (goto, L1, _, _)
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion21.md
+```
+
+**Celda 2 - `ia_sesion21_c.c`:**
+
+```text
+=== AUDITORIA SESION 21 - Cuadruplos y temporales unicos ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] nuevo_temporal(_t0)                esperado: _t0          obtenido: _t0          OK
+[ 2] nuevo_temporal(_t7)                esperado: _t7          obtenido: _t7          OK
+[ 3] cuadruplo de a + b
+     esperado: (+, a, b, _t0)
+     obtenido: (+, a, b, _t0)
+     -> OK
+[ 4] cuadruplo de _t0 * c
+     esperado: (*, _t0, c, _t1)
+     obtenido: (*, _t0, c, _t1)
+     -> OK
+[ 5] asignacion simple                  esperado: (=, a, _, x) obtenido: (=, a, _, x) OK
+[ 6] goto sin operandos
+     esperado: (goto, L1, _, _)
+     obtenido: (goto, L1, _, _)
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion21.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió hacía `(*contador)++` **antes** de

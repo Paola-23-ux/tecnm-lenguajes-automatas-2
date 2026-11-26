@@ -120,6 +120,41 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion23.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion23_c.c`:**
+
+```text
+=== AUDITORIA SESION 23 - Etiquetas y saltos incondicionales ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] nueva_etiqueta(L0)                 esperado: L0           obtenido: L0           OK
+[ 2] nueva_etiqueta(L5)                 esperado: L5           obtenido: L5           OK
+[ 3] emitir_flujo(GOTO L2)              esperado: GOTO L2      obtenido: GOTO L2      OK
+[ 4] emitir_flujo(marca L2)             esperado: L2:          obtenido: L2:          OK
+[ 5] emitir_flujo(NULL)                 esperado:              obtenido:              OK
+[ 6] nueva_etiqueta(L10)                esperado: L10          obtenido: L10          OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion23.md
+```
+
+**Celda 2 - `ia_sesion23_c.c`:**
+
+```text
+=== AUDITORIA SESION 23 - Etiquetas y saltos incondicionales ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] nueva_etiqueta(L0)                 esperado: L0           obtenido: L0           OK
+[ 2] nueva_etiqueta(L5)                 esperado: L5           obtenido: L5           OK
+[ 3] emitir_flujo(GOTO L2)              esperado: GOTO L2      obtenido: GOTO L2      OK
+[ 4] emitir_flujo(marca L2)             esperado: L2:          obtenido: L2:          OK
+[ 5] emitir_flujo(NULL)                 esperado:              obtenido:              OK
+[ 6] nueva_etiqueta(L10)                esperado: L10          obtenido: L10          OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion23.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió metía `etiqueta` directo a `snprintf`

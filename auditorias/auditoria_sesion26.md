@@ -163,6 +163,59 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion26.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion26_c.c`:**
+
+```text
+=== AUDITORIA SESION 26 - Llamadas, parametros y retorno ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] PARAM x                            esperado: PARAM x      obtenido: PARAM x      OK
+[ 2] PARAM y                            esperado: PARAM y      obtenido: PARAM y      OK
+[ 3] CALL con dos argumentos
+     esperado: _t0 = CALL f, 2
+     obtenido: _t0 = CALL f, 2
+     -> OK
+[ 4] llamada anidada f(g(x))
+     esperado: _t1 = CALL f, 1
+     obtenido: _t1 = CALL f, 1
+     -> OK
+[ 5] CALL sin argumentos
+     esperado: _t0 = CALL p, 0
+     obtenido: _t0 = CALL p, 0
+     -> OK
+[ 6] RETURN con valor                   esperado: RETURN _t0   obtenido: RETURN _t0   OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion26.md
+```
+
+**Celda 2 - `ia_sesion26_c.c`:**
+
+```text
+=== AUDITORIA SESION 26 - Llamadas, parametros y retorno ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] PARAM x                            esperado: PARAM x      obtenido: PARAM x      OK
+[ 2] PARAM y                            esperado: PARAM y      obtenido: PARAM y      OK
+[ 3] CALL con dos argumentos
+     esperado: _t0 = CALL f, 2
+     obtenido: _t0 = CALL f, 2
+     -> OK
+[ 4] llamada anidada f(g(x))
+     esperado: _t1 = CALL f, 1
+     obtenido: _t1 = CALL f, 1
+     -> OK
+[ 5] CALL sin argumentos
+     esperado: _t0 = CALL p, 0
+     obtenido: _t0 = CALL p, 0
+     -> OK
+[ 6] RETURN con valor                   esperado: RETURN _t0   obtenido: RETURN _t0   OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion26.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió **contaba los argumentos recibidos**

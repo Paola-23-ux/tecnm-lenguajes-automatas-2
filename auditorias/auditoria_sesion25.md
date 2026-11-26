@@ -175,6 +175,47 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion25.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion25_c.c`:**
+
+```text
+=== AUDITORIA SESION 25 - Esqueleto TAC de while y for ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] while: marca de inicio             esperado: L0:          obtenido: L0:          OK
+[ 2] while: condicion
+     esperado: IFFALSE a < b GOTO L1
+     obtenido: IFFALSE a < b GOTO L1
+     -> OK
+[ 3] dos ciclos sin colision            esperado: L2:          obtenido: L2:          OK
+[ 4] for: inicializacion                esperado: i = 0        obtenido: i = 0        OK
+[ 5] for: actualizacion                 esperado: i = i + 1    obtenido: i = i + 1    OK
+[ 6] for sin post (NULL)                esperado: 5            obtenido: 5            OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion25.md
+```
+
+**Celda 2 - `ia_sesion25_c.c`:**
+
+```text
+=== AUDITORIA SESION 25 - Esqueleto TAC de while y for ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] while: marca de inicio             esperado: L0:          obtenido: L0:          OK
+[ 2] while: condicion
+     esperado: IFFALSE a < b GOTO L1
+     obtenido: IFFALSE a < b GOTO L1
+     -> OK
+[ 3] dos ciclos sin colision            esperado: L2:          obtenido: L2:          OK
+[ 4] for: inicializacion                esperado: i = 0        obtenido: i = 0        OK
+[ 5] for: actualizacion                 esperado: i = i + 1    obtenido: i = i + 1    OK
+[ 6] for sin post (NULL)                esperado: 5            obtenido: 5            OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion25.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió **siempre emitía la línea del `post`**,

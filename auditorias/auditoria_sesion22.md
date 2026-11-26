@@ -155,6 +155,65 @@ RESULTADO: 6/6 pruebas superadas
 TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion22.md
 ```
 
+
+### Corrida real desde Colab (evidencia)
+
+**Celda 1 - `artesano_sesion22_c.c`:**
+
+```text
+=== AUDITORIA SESION 22 - Traductor de AST a TAC con precedencia ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] a + b * c                          esperado: _t0 = b * c  obtenido: _t0 = b * c  OK
+[ 2] a + b * c (2a linea)
+     esperado: _t1 = a + _t0
+     obtenido: _t1 = a + _t0
+     -> OK
+[ 3] (a + b) * c
+     esperado: _t1 = _t0 * c
+     obtenido: _t1 = _t0 * c
+     -> OK
+[ 4] x * (y - z) + w
+     esperado: _t2 = _t1 + w
+     obtenido: _t2 = _t1 + w
+     -> OK
+[ 5] hoja sin operaciones               esperado: 0            obtenido: 0            OK
+[ 6] (a + b) * (c - d)
+     esperado: _t2 = _t0 * _t1
+     obtenido: _t2 = _t0 * _t1
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion22.md
+```
+
+**Celda 2 - `ia_sesion22_c.c`:**
+
+```text
+=== AUDITORIA SESION 22 - Traductor de AST a TAC con precedencia ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] a + b * c                          esperado: _t0 = b * c  obtenido: _t0 = b * c  OK
+[ 2] a + b * c (2a linea)
+     esperado: _t1 = a + _t0
+     obtenido: _t1 = a + _t0
+     -> OK
+[ 3] (a + b) * c
+     esperado: _t1 = _t0 * c
+     obtenido: _t1 = _t0 * c
+     -> OK
+[ 4] x * (y - z) + w
+     esperado: _t2 = _t1 + w
+     obtenido: _t2 = _t1 + w
+     -> OK
+[ 5] hoja sin operaciones               esperado: 0            obtenido: 0            OK
+[ 6] (a + b) * (c - d)
+     esperado: _t2 = _t0 * _t1
+     obtenido: _t2 = _t0 * _t1
+     -> OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion22.md
+```
+
 ### Reporte Crítico
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
 > La primera propuesta que me devolvió recorría el árbol en **preorden**:
