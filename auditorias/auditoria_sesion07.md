@@ -140,6 +140,40 @@ int evaluar(ASTNode *n, int *error) {
 
 **Resultado del Científico:** 6/6 pruebas superadas.
 
+### Salida literal del harness (corrida real desde Colab)
+
+**Celda 1 — `artesano_sesion07_c.c`:**
+
+```text
+=== AUDITORIA SESION 07 - Evaluador recursivo con deteccion de errores ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] (2+3)*4                            esperado: 20           obtenido: 20           OK
+[ 2] 7/0 -> error 1                     esperado: 1            obtenido: 1            OK
+[ 3] 7%0 -> error 1                     esperado: 1            obtenido: 1            OK
+[ 4] arbol NULL -> error 2              esperado: 2            obtenido: 2            OK
+[ 5] 10-2-3                             esperado: 5            obtenido: 5            OK
+[ 6] (8/2)+1                            esperado: 5            obtenido: 5            OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion07.md
+```
+
+**Celda 2 — `ia_sesion07_c.c`:**
+
+```text
+=== AUDITORIA SESION 07 - Evaluador recursivo con deteccion de errores ===
+Caso                               esperado:              obtenido:              resultado
+[ 1] (2+3)*4                            esperado: 20           obtenido: 20           OK
+[ 2] 7/0 -> error 1                     esperado: 1            obtenido: 1            OK
+[ 3] 7%0 -> error 1                     esperado: 1            obtenido: 1            OK
+[ 4] arbol NULL -> error 2              esperado: 2            obtenido: 2            OK
+[ 5] 10-2-3                             esperado: 5            obtenido: 5            OK
+[ 6] (8/2)+1                            esperado: 5            obtenido: 5            OK
+
+RESULTADO: 6/6 pruebas superadas
+TODO EN VERDE. Documenta tu auditoria en auditorias/auditoria_sesion07.md
+```
+
 ### Reporte Crítico
 
 *¿Qué caso borde o problema omitió la IA y cómo lo solucionaste?*
